@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import React from "react";
+import "./App.css";
+import ListAircraftComponent from "./components/ListAirportsComponent";
+import ListAirportsComponent from "./components/ListAirportsComponent";
+import ListCitiescomponent from "./components/ListAirportsComponent";
+import ListPassengersComponent from "./components/ListAirportsComponent";
+
+import "./App.css";
+import HeaderComponent from "./components/HeaderComponent";
+import FooterComponent from "./components/FooterComponent";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <HeaderComponent />
+      <div className="container">
+        <ListAircraftComponent />
+        <ListAirportsComponent />
+        <ListCitiescomponent />
+        <ListPassengersComponent />
+      </div>
+      <FooterComponent />
     </div>
   );
 }
