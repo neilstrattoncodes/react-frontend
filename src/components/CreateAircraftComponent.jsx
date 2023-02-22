@@ -9,7 +9,23 @@ class CreateAircraftComponent extends Component {
       airlineName: "",
       numberOfPassengers: "",
     };
+
+    this.changeTypeHandler = this.changeTypeHandler.bind(this);
+    this.changeAirlineNameHandler = this.changeAirlineNameHandler.bind(this);
+    this.changeNumberOfPassengersHandler =
+      this.changeNumberOfPassengersHandler.bind(this);
+    this.saveAircraft = this.saveAircraft.bind(this);
   }
+
+  saveAircraft = (e) => {
+    e.preventDefault();
+    let aircraft = {
+      type: this.state.type,
+      airlineName: this.state.airlineName,
+      numberOfPassengers: this.state.numberOfPassengers,
+    };
+    console.log("aircraft =>" + JSON.stringify(aircraft));
+  };
 
   changeTypeHandler = (event) => {
     this.setState({ type: event.target.value });
@@ -22,6 +38,10 @@ class CreateAircraftComponent extends Component {
   changeNumberOfPassengersHandler = (event) => {
     this.setState({ numberOfPassengers: event.target.value });
   };
+
+  cancel() {
+    this.props.history.push("/aircraft");
+  }
 
   render() {
     return (
@@ -62,6 +82,19 @@ class CreateAircraftComponent extends Component {
                       onChange={this.changeNumberOfPassengersHandler}
                     />
                   </div>
+                  <button
+                    className="btn btn-success"
+                    onClick={this.saveAircraft}
+                  >
+                    Save
+                  </button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={this.cancel.bind(this)}
+                    style={{ marginLeft: "10px" }}
+                  >
+                    Cancel
+                  </button>
                 </form>
               </div>
             </div>
