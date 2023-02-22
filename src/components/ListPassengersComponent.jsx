@@ -8,6 +8,7 @@ class ListPassengersComponent extends Component {
     this.state = {
       passengers: [],
     };
+    this.addPassengers = this.addPassengers.bind(this);
   }
 
   componentDidMount() {
@@ -15,11 +16,19 @@ class ListPassengersComponent extends Component {
       this.setState({ passengers: res.data });
     });
   }
+  addPassengers() {
+    this.props.history.push("/add-passengers");
+  }
+
   render() {
     return (
       <div>
         <h2 className="text-center">Passengers List</h2>
         <div className="row">
+          <button className="btn btn-primary" onClick={this.addPassengers}>
+            {" "}
+            Add Passenger
+          </button>{" "}
           <table className="table table-striped table-bordered">
             <thead>
               <tr>

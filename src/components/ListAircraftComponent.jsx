@@ -8,6 +8,7 @@ class ListAircraftComponent extends Component {
     this.state = {
       aircrafts: [],
     };
+    this.addAircraft = this.addAircraft.bind(this);
   }
 
   componentDidMount() {
@@ -15,10 +16,22 @@ class ListAircraftComponent extends Component {
       this.setState({ aircrafts: res.data });
     });
   }
+
+  addAircraft() {
+    this.props.history.push("/add-aircraft");
+  }
+
   render() {
     return (
       <div>
         <h2 className="text-center">Aircraft List</h2>
+        <div className="row">
+          <button className="btn btn-primary" onClick={this.addAircraft}>
+            {" "}
+            Add Aircraft
+          </button>{" "}
+        </div>
+
         <div className="row">
           <table className="table table-striped table-bordered">
             <thead>

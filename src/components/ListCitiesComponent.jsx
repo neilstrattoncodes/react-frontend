@@ -8,6 +8,7 @@ class ListCitiesComponent extends Component {
     this.state = {
       cities: [],
     };
+    this.addCities = this.addCities.bind(this);
   }
 
   componentDidMount() {
@@ -15,11 +16,20 @@ class ListCitiesComponent extends Component {
       this.setState({ cities: res.data });
     });
   }
+
+  addCities() {
+    this.props.history.push("/add-cities");
+  }
+
   render() {
     return (
       <div>
         <h2 className="text-center">Cities List</h2>
         <div className="row">
+          <button className="btn btn-primary" onClick={this.addCities}>
+            {" "}
+            Add City
+          </button>{" "}
           <table className="table table-striped table-bordered">
             <thead>
               <tr>
